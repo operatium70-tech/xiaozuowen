@@ -18,21 +18,28 @@ def run(command: list[str]) -> None:
     subprocess.run(command, cwd=ROOT, check=True)
 
 
+def md_preview_name(txt_name: str) -> str:
+    return txt_name.removesuffix(".txt") + "_md.md"
+
+
+def export_clean(source: Path, txt_output: Path) -> None:
+    md_output = txt_output.with_name(md_preview_name(txt_output.name))
+    run(["python3", "tools/clean_markdown.py", str(source), str(txt_output)])
+    md_output.write_text(txt_output.read_text(encoding="utf-8"), encoding="utf-8")
+
+
 def main() -> None:
     for chapter in sorted(FIRST_VOLUME_SOURCE.glob("第*.md")):
         if "开头方案" in chapter.name:
             continue
         output_name = chapter.with_suffix(".txt").name
-        run(["python3", "tools/clean_markdown.py", str(chapter), str(FIRST_VOLUME_DIR / output_name)])
-        run(["python3", "tools/clean_markdown.py", str(chapter), str(PLATFORM_DIR / output_name)])
+        export_clean(chapter, FIRST_VOLUME_DIR / output_name)
+        export_clean(chapter, PLATFORM_DIR / output_name)
 
-    run(
-        [
-            "python3",
-            "tools/build_volume.py",
-            str(FIRST_VOLUME_SOURCE),
-            str(MERGED_DIR / "第一卷_灾变降临_当前整合.txt"),
-        ]
+    merged_output = MERGED_DIR / "第一卷_灾变降临_当前整合.txt"
+    run(["python3", "tools/build_volume.py", str(FIRST_VOLUME_SOURCE), str(merged_output)])
+    merged_output.with_name(md_preview_name(merged_output.name)).write_text(
+        merged_output.read_text(encoding="utf-8"), encoding="utf-8"
     )
 
 
