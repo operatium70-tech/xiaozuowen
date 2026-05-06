@@ -1,0 +1,20 @@
+# Obsidian local workspace/config
+.obsidian/
+
+# macOS
+.DS_Store
+
+# Python/tooling cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local virtual environments
+.venv/
+venv/
+
+# Temporary files
+*.tmp
+*.temp
