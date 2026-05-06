@@ -1,6 +1,11 @@
 # Obsidian local workspace/config
 .obsidian/
 
+# Obsidian local scratch files
+/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9].md
+/未命名*.base
+/未命名*.canvas
+
 # macOS
 .DS_Store
 
