@@ -44,6 +44,7 @@ Recommended scopes:
 - The summary must clearly identify the main change.
 - The body must list important content areas changed.
 - The body must be searchable by future Git history review.
+- Use Chinese for the key summary and body content so future history search can directly match novel project changes.
 - Avoid vague messages such as `update`, `fix files`, or `initial commit`.
 - Mention novel-engineering modules when relevant.
 
