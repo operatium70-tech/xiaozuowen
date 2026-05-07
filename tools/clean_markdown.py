@@ -5,7 +5,7 @@ Conversion rules:
 - Remove YAML frontmatter at the top of a chapter.
 - Remove HTML comments used for Obsidian review annotations.
 - Remove engineering-only level-2 sections:
-  "关联索引", "本章推进", "新伏笔", "情绪节奏".
+  "关联索引", "本章推进", "新伏笔", "情绪节奏", "字数统计".
 - Convert Obsidian wiki links to plain text:
   [[李阳]] -> 李阳, [[path|label]] -> label.
 - Convert remaining Markdown headings to plain text for txt publishing.
@@ -19,7 +19,7 @@ from pathlib import Path
 
 
 BLOCK_ONLY_SECTIONS = {"关联索引"}
-DROP_TO_NEXT_HEADING_SECTIONS = {"本章推进", "新伏笔", "情绪节奏"}
+DROP_TO_NEXT_HEADING_SECTIONS = {"本章推进", "新伏笔", "情绪节奏", "字数统计"}
 
 
 def strip_frontmatter(text: str) -> str:
