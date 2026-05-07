@@ -30,7 +30,7 @@ def export_clean(source: Path, txt_output: Path) -> None:
 
 def main() -> None:
     for chapter in sorted(FIRST_VOLUME_SOURCE.glob("第*.md")):
-        if "开头方案" in chapter.name:
+        if "开头方案" in chapter.name or "批注处理记录" in chapter.name:
             continue
         output_name = chapter.with_suffix(".txt").name
         export_clean(chapter, FIRST_VOLUME_DIR / output_name)

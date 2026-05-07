@@ -3,6 +3,7 @@
 
 Conversion rules:
 - Remove YAML frontmatter at the top of a chapter.
+- Remove HTML comments used for Obsidian review annotations.
 - Remove engineering-only level-2 sections:
   "关联索引", "本章推进", "新伏笔", "情绪节奏".
 - Convert Obsidian wiki links to plain text:
@@ -28,6 +29,10 @@ def strip_frontmatter(text: str) -> str:
     if end == -1:
         return text
     return text[end + len("\n---\n") :]
+
+
+def strip_html_comments(text: str) -> str:
+    return re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
 
 
 def strip_engineering_sections(text: str) -> str:
@@ -87,6 +92,7 @@ def normalize_blank_lines(text: str) -> str:
 
 def clean_markdown(text: str) -> str:
     text = strip_frontmatter(text)
+    text = strip_html_comments(text)
     text = strip_engineering_sections(text)
     text = convert_wiki_links(text)
     text = convert_markdown_headings(text)
