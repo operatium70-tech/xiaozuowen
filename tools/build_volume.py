@@ -4,13 +4,20 @@
 from __future__ import annotations
 
 import argparse
+import re
 from pathlib import Path
 
 from clean_markdown import clean_markdown
 
 
-def chapter_sort_key(path: Path) -> str:
-    return path.name
+CHAPTER_RE = re.compile(r"^第(\d+)章[_\s]*(.+)$")
+
+
+def chapter_sort_key(path: Path) -> tuple[int, str]:
+    match = CHAPTER_RE.match(path.stem)
+    if match:
+        return int(match.group(1)), path.name
+    return 999999, path.name
 
 
 def build_volume(source_dir: Path) -> str:
