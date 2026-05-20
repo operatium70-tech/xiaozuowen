@@ -61,3 +61,4 @@ P0、严格防止写入过程被 shell 引号打断。
 
 #任务通知
 P0、任务结束、中途卡壳需要协助、中途询问等重要事件发消息给我。（F:\code\aiGroup\tools\wecom-notify\notify_wecom.py）
+
