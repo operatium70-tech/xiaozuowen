@@ -3,6 +3,7 @@ X1= F:\code\aiGroup\xiaozuowen\盈丰传
 X3=规则如下
 """
 F:\code\aiGroup\xiaozuowen\global.txt
+xiaozuowen\盈丰传\总控制大屏.md
 Obsidian方法 就是用文件夹+双链+图谱，把你的小说设定、人物、剧情全部网状关联，AI 只能按规则写，彻底杜绝崩设定、忘伏笔、OOC。
 内容按照Obsidian方法写入文件夹架构。
 # 宏观设计理念
@@ -58,6 +59,9 @@ P0、所有回复默认中文，结论先给，证据后给。
 #终端工具
 P0、windows下任何终端操作都必须严格注意字符集，一切涉及到字符集都必须是 UTF-8。遇到乱码都必须纠正。
 P0、严格防止写入过程被 shell 引号打断。
+
+#规范
+P0、深度阅读文件夹架构，对文件摆放位置要慎重考虑。调整后关联关系都要同步修改。
 
 #任务通知
 P0、任务结束、中途卡壳需要协助、中途询问等重要事件发消息给我。（F:\code\aiGroup\tools\wecom-notify\notify_wecom.py）
